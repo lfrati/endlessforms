@@ -24,21 +24,32 @@
   /* Bottom right container with both logo and endless forms */
   .endless-forms {
     position: fixed;
-    bottom: 80px;
-    right: 60px;
-    width: 600px;
-    height: 50px;
+    bottom: min(5vh, 40px);
+    right: min(4vw, 60px);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: clamp(8px, 1.5vw, 24px);
+    /* Debug: uncomment to see container bounds */
+    /* border: 1px solid red; */
   }
 
-  /* Logo : set the size of the logo to 280px */
+  /* Logo: scales consistently with viewport width */
   .endless-forms #logo {
-    width: 80px;
-    height: 80px;
-    margin-left: 20px;
+    width: clamp(24px, 3vw, 48px);
+    height: clamp(24px, 3vw, 48px);
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  
+  /* Endless forms text: scales consistently with viewport width */
+  .endless-forms img:first-child {
+    width: auto;
+    height: clamp(30px, 4vw, 60px);
+    object-fit: contain;
+    flex-shrink: 1;
+    min-width: 0;
   }
   
   /* Make endless-forms SVG white - only the first img (endless-forms.svg) */
@@ -53,7 +64,7 @@
   <!-- Bottom right container with both logo and endless forms -->
   <div class="endless-forms">
     <img src="endless-forms.svg" alt="Endless Forms" />
-    <img id="logo" src="logo.svg" alt="Logo" " />
+    <img id="logo" src="logo.svg" alt="Logo" />
   </div>
 
 
